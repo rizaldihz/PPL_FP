@@ -7,7 +7,7 @@ package icrs;
 
 /**
  *
- * @author windows
+ * @author rizaldi
  */
 public class Icrs {
 
@@ -18,6 +18,7 @@ public class Icrs {
         // TODO code application logic here
         
         InsertPage page_insert = new InsertPage();
+        page_insert.setVisible(true);
     }
     
 }

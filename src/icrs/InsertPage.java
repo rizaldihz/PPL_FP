@@ -7,10 +7,11 @@ package icrs;
 
 /**
  *
- * @author windows
+ * @author rizaldi
  */
 public class InsertPage extends javax.swing.JFrame {
 
+    private InsertForm form;
     /**
      * Creates new form InsertPage
      */
@@ -27,21 +28,6 @@ public class InsertPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        FormInsert = new javax.swing.JPanel();
-        FormJudul = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        FromPenulis = new javax.swing.JTextField();
-        FromKeyword = new javax.swing.JTextField();
-        FromAbstract = new javax.swing.JTextField();
-        FromReferensi = new javax.swing.JTextField();
-        FromThPublikasi = new javax.swing.JTextField();
-        ButtonSubmit = new javax.swing.JButton();
-        LabelJudul = new javax.swing.JLabel();
-        LabelPenulis = new javax.swing.JLabel();
-        LabelKeyword = new javax.swing.JLabel();
-        LabelAbstraksi = new javax.swing.JLabel();
-        LabelReferensi = new javax.swing.JLabel();
-        LabelTahun = new javax.swing.JLabel();
         MenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -49,125 +35,6 @@ public class InsertPage extends javax.swing.JFrame {
         InsertMetadataMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        FormJudul.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FormJudulActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("FORM INSERT METADATA");
-
-        FromPenulis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FromPenulisActionPerformed(evt);
-            }
-        });
-
-        FromKeyword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FromKeywordActionPerformed(evt);
-            }
-        });
-
-        FromAbstract.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FromAbstractActionPerformed(evt);
-            }
-        });
-
-        FromReferensi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FromReferensiActionPerformed(evt);
-            }
-        });
-
-        FromThPublikasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FromThPublikasiActionPerformed(evt);
-            }
-        });
-
-        ButtonSubmit.setText("Submit");
-
-        LabelJudul.setText("Judul Artikel");
-
-        LabelPenulis.setText("Penulis Artikel");
-
-        LabelKeyword.setText("Keyword Artikel");
-
-        LabelAbstraksi.setText("Abstraksi Artikel");
-
-        LabelReferensi.setText("Referensi Artikel");
-
-        LabelTahun.setText("Tahun Publikasi Artikel");
-
-        javax.swing.GroupLayout FormInsertLayout = new javax.swing.GroupLayout(FormInsert);
-        FormInsert.setLayout(FormInsertLayout);
-        FormInsertLayout.setHorizontalGroup(
-            FormInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 538, Short.MAX_VALUE)
-            .addGroup(FormInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(FormInsertLayout.createSequentialGroup()
-                    .addGap(45, 45, 45)
-                    .addGroup(FormInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(ButtonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(FormInsertLayout.createSequentialGroup()
-                            .addGroup(FormInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(LabelPenulis)
-                                .addComponent(LabelKeyword)
-                                .addComponent(LabelAbstraksi)
-                                .addComponent(LabelReferensi)
-                                .addComponent(LabelJudul)
-                                .addComponent(LabelTahun))
-                            .addGap(38, 38, 38)
-                            .addGroup(FormInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(FormInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(FromAbstract, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(FromReferensi, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(FromKeyword, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(FromPenulis, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(FormJudul, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(FromThPublikasi, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel1))))
-                    .addContainerGap(45, Short.MAX_VALUE)))
-        );
-        FormInsertLayout.setVerticalGroup(
-            FormInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 529, Short.MAX_VALUE)
-            .addGroup(FormInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(FormInsertLayout.createSequentialGroup()
-                    .addGap(28, 28, 28)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(41, 41, 41)
-                    .addGroup(FormInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(FormJudul, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(LabelJudul))
-                    .addGap(18, 18, 18)
-                    .addGroup(FormInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(FromPenulis, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(LabelPenulis))
-                    .addGap(18, 18, 18)
-                    .addGroup(FormInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(FromKeyword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(LabelKeyword))
-                    .addGap(18, 18, 18)
-                    .addGroup(FormInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(FromAbstract, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(LabelAbstraksi))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(FormInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(FromReferensi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(LabelReferensi))
-                    .addGap(18, 18, 18)
-                    .addGroup(FormInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(FromThPublikasi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(LabelTahun))
-                    .addGap(18, 18, 18)
-                    .addComponent(ButtonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(28, Short.MAX_VALUE)))
-        );
 
         jMenu1.setText("File");
         MenuBar.add(jMenu1);
@@ -193,49 +60,19 @@ public class InsertPage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(143, Short.MAX_VALUE)
-                .addComponent(FormInsert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(139, 139, 139))
+            .addGap(0, 604, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(FormInsert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+            .addGap(0, 587, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void InsertMetadataMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertMetadataMenuActionPerformed
-        // TODO add your handling code here:
+        InsertPageControl.showInsertForm();
     }//GEN-LAST:event_InsertMetadataMenuActionPerformed
-
-    private void FormJudulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FormJudulActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FormJudulActionPerformed
-
-    private void FromPenulisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FromPenulisActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FromPenulisActionPerformed
-
-    private void FromKeywordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FromKeywordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FromKeywordActionPerformed
-
-    private void FromAbstractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FromAbstractActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FromAbstractActionPerformed
-
-    private void FromReferensiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FromReferensiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FromReferensiActionPerformed
-
-    private void FromThPublikasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FromThPublikasiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FromThPublikasiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,24 +110,9 @@ public class InsertPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonSubmit;
-    private javax.swing.JPanel FormInsert;
-    private javax.swing.JTextField FormJudul;
-    private javax.swing.JTextField FromAbstract;
-    private javax.swing.JTextField FromKeyword;
-    private javax.swing.JTextField FromPenulis;
-    private javax.swing.JTextField FromReferensi;
-    private javax.swing.JTextField FromThPublikasi;
     private javax.swing.JMenu Insert;
     private javax.swing.JMenuItem InsertMetadataMenu;
-    private javax.swing.JLabel LabelAbstraksi;
-    private javax.swing.JLabel LabelJudul;
-    private javax.swing.JLabel LabelKeyword;
-    private javax.swing.JLabel LabelPenulis;
-    private javax.swing.JLabel LabelReferensi;
-    private javax.swing.JLabel LabelTahun;
     private javax.swing.JMenuBar MenuBar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     // End of variables declaration//GEN-END:variables
