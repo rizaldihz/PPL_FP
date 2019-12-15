@@ -7,6 +7,7 @@ package icrs;
 
 import java.sql.*;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +18,38 @@ public class InsertPageControl {
     public static void showInsertForm(){
         InsertForm form = new InsertForm();
         form.setVisible(true);
+    }
+    
+    public static void showInsertPage(){
+        InsertPage page = new InsertPage();
+        page.setVisible(true);
+    }
+    
+    public static void loadTable(InsertPage page, String col, String condition, int no)
+    {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("No");
+        model.addColumn("Judul");
+        model.addColumn("Tahun");
+        model.addColumn("Penulis");
+        model.addColumn("Keyword");
+        
+        int i=1;
+        ResultSet res = DBAdapter.getMetadata(col, condition, no);
+        try{
+            page.showProgress(true);
+            while(res.next()){
+                model.addRow(new Object[]{i++,res.getString("judul"),res.getString("tahun"),res.getString("penulis"),res.getString("keyword")});
+                System.err.println(res.getString("tahun"));
+                page.setProgress(i*10);
+            }
+            page.setTableData(model);
+            page.setProgress(100);
+            page.showProgress(false);
+        }catch(SQLException e){
+            page.setTableData(model);
+            System.err.println(e);
+        }
     }
     
     public static void showMessageSuccess()
@@ -47,13 +80,13 @@ public class InsertPageControl {
         insert = DBAdapter.insertArtikel(artikel);
         form.setProgress(100);
         showMessageSuccess();
-//        form.showProgress(false);
         form.setVisible(false);
         return insert;
     }
     
     public static void main(String args[]) {
 //        getAuthors();
+        showInsertPage();
     }
     
 }

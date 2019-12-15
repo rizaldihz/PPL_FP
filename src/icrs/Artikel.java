@@ -10,6 +10,7 @@ package icrs;
  * @author rizaldi
  */
 public class Artikel {
+    private int id;
     private String judul;
     private String penulis;
     private String tahun;
@@ -27,6 +28,10 @@ public class Artikel {
         this.abstraksi = abstraksi;
         this.keyword = keyword;
         this.referensi = referensi;
+    }
+    
+    public int getID(){
+        return this.id;
     }
     
     public String getJudul(){

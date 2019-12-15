@@ -5,6 +5,8 @@
  */
 package icrs;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author rizaldi
@@ -17,8 +19,22 @@ public class InsertPage extends javax.swing.JFrame {
      */
     public InsertPage() {
         initComponents();
+        this.page = 0;
+        InsertPageControl.loadTable(this,null,null,this.page);
+        progress.setVisible(false);
     }
 
+    
+    public void setProgress(int i)
+    {
+        progress.setValue(i);
+    }
+    
+    public void showProgress(boolean i)
+    {
+        progress.setVisible(i);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,6 +45,13 @@ public class InsertPage extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        nextButton = new javax.swing.JButton();
+        prevButton = new javax.swing.JButton();
+        cariField = new javax.swing.JTextField();
+        cariButton = new javax.swing.JButton();
+        progress = new javax.swing.JProgressBar();
         MenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -39,6 +62,40 @@ public class InsertPage extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Daftar Artikel");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        nextButton.setText("Next");
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextButtonActionPerformed(evt);
+            }
+        });
+
+        prevButton.setText("Prev");
+        prevButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prevButtonActionPerformed(evt);
+            }
+        });
+
+        cariButton.setText("Cari Keyword");
+        cariButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cariButtonActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("File");
         MenuBar.add(jMenu1);
@@ -64,17 +121,46 @@ public class InsertPage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(255, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(246, 246, 246))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(cariField, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cariButton)
+                .addGap(0, 28, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(246, 246, 246))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(prevButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nextButton)
+                        .addContainerGap())))
+            .addComponent(progress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addContainerGap(524, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cariField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cariButton))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nextButton)
+                    .addComponent(prevButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -84,6 +170,30 @@ public class InsertPage extends javax.swing.JFrame {
         InsertPageControl.showInsertForm();
     }//GEN-LAST:event_InsertMetadataMenuActionPerformed
 
+    private void cariButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariButtonActionPerformed
+        this.keyword = cariField.getText();
+        this.page = 0;
+        InsertPageControl.loadTable(this, "keyword", this.keyword, this.page);
+    }//GEN-LAST:event_cariButtonActionPerformed
+
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        // TODO add your handling code here:
+        this.page = this.page+1;
+        InsertPageControl.loadTable(this, "keyword", this.keyword, this.page);
+    }//GEN-LAST:event_nextButtonActionPerformed
+
+    private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
+        if(this.page > 0){
+            this.page = this.page-1;
+            InsertPageControl.loadTable(this, "keyword", this.keyword, this.page);
+        }
+    }//GEN-LAST:event_prevButtonActionPerformed
+
+    
+    public void setTableData(DefaultTableModel model)
+    {
+        jTable1.setModel(model);
+    }
     /**
      * @param args the command line arguments
      */
@@ -123,8 +233,17 @@ public class InsertPage extends javax.swing.JFrame {
     private javax.swing.JMenu Insert;
     private javax.swing.JMenuItem InsertMetadataMenu;
     private javax.swing.JMenuBar MenuBar;
+    private javax.swing.JButton cariButton;
+    private javax.swing.JTextField cariField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JButton nextButton;
+    private javax.swing.JButton prevButton;
+    private javax.swing.JProgressBar progress;
     // End of variables declaration//GEN-END:variables
+    private int page;
+    private String keyword;
 }

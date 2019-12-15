@@ -78,9 +78,30 @@ public class DBAdapter {
         }    
         return result;
     }
+    
+    public static ResultSet getMetadata(String col,String condition,int page)
+    {
+        Connection conn;
+        Statement stmt;
+        ResultSet query = null;
+        try{
+            conn = DBAdapter.getConnection();
+            stmt = conn.createStatement();
+            String where = "";
+            if(condition!=null && col!=null){
+                where = where + " where "+col+" like '%"+condition+"%'";
+            }
+            page = page*10;
+            query = stmt.executeQuery("SELECT * from metadata"+where+" limit "+page+",10;");
+        }catch(SQLException e){
+            System.err.println(e);
+        }
+        return query;
+    }
 
     public static void main(String args[]) {
 //        getAuthors();
+        getMetadata(null,null,0);
     }
     
 }
