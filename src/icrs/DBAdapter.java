@@ -48,6 +48,36 @@ public class DBAdapter {
         }
         return result;
     }
+    
+    public static int insertArtikel(Artikel artikel)
+    {
+        Connection conn;
+        Statement stmt;
+        boolean usernameExists = false;        
+        int result = 0;
+        try {
+            conn = getConnection();
+            stmt = conn.createStatement();
+//            ResultSet query = stmt.executeQuery("SELECT * FROM book");
+//            while(query.next()){
+//                int idmember = Integer.parseInt(query.getString("idbook"));
+//                if(idmember==temp){
+//                    System.out.println("Sama");
+//                    usernameExists = true;
+//                    break;
+//                }
+//            }
+
+            String insert = "INSERT INTO metadata(judul,penulis,tahun,abstraksi,referensi,keyword) VALUES('"+artikel.getJudul()+"','"+artikel.getPenulis()+"', '"+artikel.getTahun()+"', '"+artikel.getAbstraksi()+"', '"+artikel.getReferensi()+"', '"+artikel.getKeyword()+"');";
+            stmt.executeUpdate(insert);
+//            MainControl.openDialogueBox("Data buku berhasil ditambahkan", 10, dataBuku.getIdBook(), "buku");
+            result = 1;
+
+        } catch(SQLException e){
+            System.err.println(e);
+        }    
+        return result;
+    }
 
     public static void main(String args[]) {
 //        getAuthors();

@@ -28,6 +28,7 @@ public class InsertForm extends javax.swing.JFrame {
         System.err.println(authors);
         penulisSelect.setModel(new DefaultComboBoxModel<String>(authors.toArray(new String[0])));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        progressBar.setVisible(false);
     }
 
     /**
@@ -53,6 +54,7 @@ public class InsertForm extends javax.swing.JFrame {
         refField = new javax.swing.JTextField();
         submit = new javax.swing.JButton();
         penulisSelect = new javax.swing.JComboBox<>();
+        progressBar = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,11 +136,13 @@ public class InsertForm extends javax.swing.JFrame {
                         .addGap(120, 120, 120)
                         .addComponent(submit, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(55, Short.MAX_VALUE))
+            .addComponent(progressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -173,7 +177,10 @@ public class InsertForm extends javax.swing.JFrame {
         String tahun = tahunField.getText();
         String penulis = penulisSelect.getItemAt(penulisSelect.getSelectedIndex());
         String reference = refField.getText();
+        String abstrak = abstrakField.getText();
         
+        int submit;
+        submit = InsertPageControl.insertArtikel(nama,tahun,keyword,penulis,abstrak,reference, this);
     }//GEN-LAST:event_submitActionPerformed
 
     /**
@@ -210,6 +217,16 @@ public class InsertForm extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void setProgress(int i)
+    {
+        progressBar.setValue(i);
+    }
+    
+    public void showProgress(boolean i)
+    {
+        progressBar.setVisible(i);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField abstrakField;
@@ -223,6 +240,7 @@ public class InsertForm extends javax.swing.JFrame {
     private javax.swing.JTextField judulField;
     private javax.swing.JTextField keywordField;
     private javax.swing.JComboBox<String> penulisSelect;
+    private javax.swing.JProgressBar progressBar;
     private javax.swing.JTextField refField;
     private javax.swing.JButton submit;
     private javax.swing.JTextField tahunField;

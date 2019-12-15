@@ -19,6 +19,12 @@ public class InsertPageControl {
         form.setVisible(true);
     }
     
+    public static void showMessageSuccess()
+    {
+        SuccessMessage message = new SuccessMessage();
+        message.setVisible(true);
+    }
+    
     public static ArrayList<String> getAuthors(){
         ArrayList<String[]> result = new ArrayList<String[]>();
         ArrayList<String> res = new ArrayList<String>();
@@ -28,6 +34,22 @@ public class InsertPageControl {
             res.add(result.get(i)[1]);
         }
         return res;
+    }
+    
+    public static int insertArtikel(String judul, String tahun, String keyword, String penulis, String abstrak, String referensi, InsertForm form)
+    {
+        Artikel artikel = new Artikel();
+        artikel.setArtikel(judul, penulis, tahun, abstrak, referensi, keyword);
+        int insert;
+        
+        form.showProgress(true);
+        form.setProgress(1);
+        insert = DBAdapter.insertArtikel(artikel);
+        form.setProgress(100);
+        showMessageSuccess();
+//        form.showProgress(false);
+        form.setVisible(false);
+        return insert;
     }
     
     public static void main(String args[]) {
