@@ -5,6 +5,8 @@
  */
 package icrs;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author windows
@@ -16,6 +18,17 @@ public class DetailArtikel extends javax.swing.JFrame {
      */
     public DetailArtikel() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
+    
+    public void setContent(Artikel artikel)
+    {
+        judulLabel.setText(artikel.getJudul());
+        abstraksiLabel.setText(artikel.getAbstraksi());
+        keywordLabel.setText(artikel.getKeyword());
+        penulisLabel.setText(artikel.getPenulis());
+        tahunLabel.setText(artikel.getTahun());
+        referensiLabel.setText(artikel.getReferensi());
     }
 
     /**

@@ -204,13 +204,14 @@ public class InsertPage extends javax.swing.JFrame {
             {
                 JTable table = (JTable)e.getSource();
                 int modelRow = Integer.valueOf( e.getActionCommand() );
-                System.err.println(table.getValueAt(modelRow,1));
-                
+                Artikel detail = (Artikel) table.getModel().getValueAt(table.getSelectedRow(),6);
+                InsertPageControl.showDetail(detail);
             }
         };
 
         ButtonColumn buttonColumn = new ButtonColumn(jTable1, detail, 5);
         buttonColumn.setMnemonic(KeyEvent.VK_D);
+        jTable1.removeColumn(jTable1.getColumnModel().getColumn(6));
     }
     /**
      * @param args the command line arguments

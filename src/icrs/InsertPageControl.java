@@ -34,14 +34,16 @@ public class InsertPageControl {
         model.addColumn("Penulis");
         model.addColumn("Keyword");
         model.addColumn("Opsi");
+        model.addColumn("");
         
         int i=1;
         ResultSet res = DBAdapter.getMetadata(col, condition, no);
         try{
             page.showProgress(true);
             while(res.next()){
-                model.addRow(new Object[]{i++,res.getString("judul"),res.getString("tahun"),res.getString("penulis"),res.getString("keyword")});
-                System.err.println(res.getString("tahun"));
+                Artikel ini = new Artikel();
+                ini.setArtikel(res.getString("judul"), res.getString("penulis"), res.getString("tahun"), res.getString("abstraksi"), res.getString("referensi"), res.getString("keyword"));
+                model.addRow(new Object[]{i++,res.getString("judul"),res.getString("tahun"),res.getString("penulis"),res.getString("keyword"),"Detail",ini});
                 page.setProgress(i*10);
             }
             page.setTableData(model);
@@ -83,6 +85,13 @@ public class InsertPageControl {
         showMessageSuccess();
         form.setVisible(false);
         return insert;
+    }
+    
+    public static void showDetail(Artikel artikel)
+    {
+        DetailArtikel detail = new DetailArtikel();
+        detail.setContent(artikel);
+        detail.setVisible(true);
     }
     
     public static void main(String args[]) {
