@@ -33,6 +33,7 @@ public class InsertPageControl {
         model.addColumn("Tahun");
         model.addColumn("Penulis");
         model.addColumn("Keyword");
+        model.addColumn("Opsi");
         
         int i=1;
         ResultSet res = DBAdapter.getMetadata(col, condition, no);

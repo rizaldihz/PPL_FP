@@ -5,6 +5,11 @@
  */
 package icrs;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -34,7 +39,7 @@ public class InsertPage extends javax.swing.JFrame {
     {
         progress.setVisible(i);
     }
-    
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -193,6 +198,18 @@ public class InsertPage extends javax.swing.JFrame {
     public void setTableData(DefaultTableModel model)
     {
         jTable1.setModel(model);
+        Action detail = new AbstractAction()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                JTable table = (JTable)e.getSource();
+                int modelRow = Integer.valueOf( e.getActionCommand() );
+                
+            }
+        };
+
+        ButtonColumn buttonColumn = new ButtonColumn(jTable1, detail, 5);
+        buttonColumn.setMnemonic(KeyEvent.VK_D);
     }
     /**
      * @param args the command line arguments
