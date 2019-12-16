@@ -204,6 +204,7 @@ public class InsertPage extends javax.swing.JFrame {
             {
                 JTable table = (JTable)e.getSource();
                 int modelRow = Integer.valueOf( e.getActionCommand() );
+                System.err.println(table.getValueAt(modelRow,1));
                 
             }
         };
